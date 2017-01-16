@@ -102,6 +102,7 @@ class WebServer(val config: FullNodeConfiguration) {
     private fun buildServletContextHandler(localRpc: CordaRPCOps): ServletContextHandler {
         return ServletContextHandler().apply {
             contextPath = "/"
+            setAttribute("rpc", localRpc)
             addServlet(DataUploadServlet::class.java, "/upload/*")
             addServlet(AttachmentDownloadServlet::class.java, "/attachments/*")
 
